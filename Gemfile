@@ -4,8 +4,10 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+#test helper
+gem 'rails-controller-testing'
 #add Bootstrap
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap-sass'
 #add javascript
 gem 'therubyracer'
 #add jquery-rails
