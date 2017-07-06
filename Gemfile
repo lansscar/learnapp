@@ -6,6 +6,8 @@ git_source(:github) do |repo_name|
 end
 #test helper
 gem 'rails-controller-testing'
+#add bcrypt for hash password
+gem 'bcrypt'
 #add Bootstrap
 gem 'bootstrap-sass'
 #add javascript
