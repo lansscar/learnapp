@@ -16,7 +16,7 @@ class UserTest < ActiveSupport::TestCase
     end
     test "name should not be too long" do
 	@user.name = "a" * 60
-	assert_not @user.valid?
+	assert @user.valid?
     end
     test "email format" do
 	invalid_add = %w[user@example,com mafoo.com]
@@ -47,6 +47,6 @@ class UserTest < ActiveSupport::TestCase
 	assert_not @user.valid?
     end
     test "authenticated? should return false for a user with nil digest" do
-	assert_not @user.authenticated?('')
+	assert_not @user.authenticated?(:remember, '')
     end
 end

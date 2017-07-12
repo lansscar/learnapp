@@ -4,16 +4,20 @@ class UserSignupTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
+  def setup
+	ActionMailer::Base.deliveries.clear
+  end
   test "invalid signup info" do
 	get signup_path
-	assert_difference 'User.count' do
+	assert_no_difference 'User.count' do
 		post users_path, params: { user: { name: "xze",
 						   email: "user@valid.com",
-						   password: "123456",
+						   password: "12346",
 						   password_confirmation: "123456" } }
 	end
-	follow_redirect!
-        assert_template 'users/show'
-	
+	assert_template 'users/new'
+	assert_select 'div#error_explanation'
+	assert_select 'div.field_with_errors'	
   end
+
 end
